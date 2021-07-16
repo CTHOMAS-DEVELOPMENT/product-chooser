@@ -43,6 +43,7 @@
 }
 .group-buttons {
   display: flex;
+  justify-content: center;
 }
 .product-information {
   display: flex;

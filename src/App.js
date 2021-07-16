@@ -105,7 +105,7 @@ function App() {
                     className="unselected-item"
                     onClick={(e) => handleClick(product, e)}
                   >
-                    {product.name + " " + index}
+                    {product.name}
                   </div>
                 ))
             }
