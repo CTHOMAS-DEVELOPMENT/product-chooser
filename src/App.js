@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import { db } from "./data/connect";
+import React, { useState, useEffect } from "react"
+import "./App.css"
+import { db } from "./data/connect"
+import Button from "./components/Button"
+import ProductList from "./components/ProductList"
+import ProductSelected from "./components/ProductSelected"
 
 function App() {
   const APIurl = "https://api.punkapi.com/v2/beers";
@@ -78,55 +81,14 @@ function App() {
     <div className="app">
       <div className="group-buttons">
         <form>
-          <button type="submit" onClick={(e) => handleBack(e)}>
-            {"<"}
-          </button>
+          <Button handler={handleBack} arrow={"<"} />
           <span>{startNumber}</span>
-          <button type="submit" onClick={(e) => handleForward(e)}>
-            {">"}
-          </button>
+          <Button handler={handleForward} arrow={">"} />
         </form>
       </div>
       <div className="app-header">
-        <div className="products-list">
-          <p>Products</p>
-          <form>
-            {
-              /*Let's remove those products that have been selected and are in the database*/
-              products
-                .filter((product, index) => {
-                  return (
-                    index <= startNumber + PAGE_SIZE && index >= startNumber
-                  );
-                })
-                .map((product, index) => (
-                  <div
-                    key={product.id}
-                    className="unselected-item"
-                    onClick={(e) => handleClick(product, e)}
-                  >
-                    {product.name}
-                  </div>
-                ))
-            }
-          </form>
-        </div>
-
-        <div className="products-selected">
-          <p>Selected products</p>
-          <form>
-            {productsChosen &&
-              productsChosen.map((data) => (
-                <div
-                  key={data.id}
-                  className="selected-item"
-                  onClick={(e) => handleClick(data, e)}
-                >
-                  {data.product}
-                </div>
-              ))}
-          </form>
-        </div>
+        <ProductList products={products} startNumber={startNumber} pageSize={PAGE_SIZE} handleClick={handleClick}></ProductList>
+        <ProductSelected productsChosen={productsChosen} handleClick={handleClick}></ProductSelected>
       </div>
       <div className="product-information">
         <div>{productName}</div>

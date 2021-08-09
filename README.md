@@ -29,11 +29,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
 ### Usage
 
 Click on any of the beer products to move it from either of the 2 lists (From the unselected list on the left or the selected list on the right)
